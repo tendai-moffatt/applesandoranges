@@ -70,7 +70,7 @@ class ShoppingCartTests: XCTestCase {
         let expectedSubtotal = 1.95
         let expectedTotal = 1.1
         let offer1 = DiscountOffer(qualifyingItemType: .apple, minimumItemCount: 2, priceMultiplier: 0.5)
-        let offer2 = DiscountOffer(qualifyingItemType: .orange, minimumItemCount: 3, priceMultiplier: 2/3)
+        let offer2 = DiscountOffer(qualifyingItemType: .orange, minimumItemCount: 3, priceMultiplier: 1/3)
         let uut = ShoppingCart(items: items)
         XCTAssert(uut.subtotal == uut.total && uut.total == expectedSubtotal, "Expected cart subtotal to equal cart total before discounts have been applied")
         
@@ -89,7 +89,7 @@ class ShoppingCartTests: XCTestCase {
         uut.apply(offer: offer1)
         XCTAssert(uut.subtotal == uut.total && uut.total == expectedSubtotal, "Expected cart subtotal to equal cart total as no matching discounts have been applied")
         
-        let offer2 = DiscountOffer(qualifyingItemType: .orange, minimumItemCount: 3, priceMultiplier: 2/3)
+        let offer2 = DiscountOffer(qualifyingItemType: .orange, minimumItemCount: 3, priceMultiplier: 1/3)
         uut.apply(offer: offer2)
         XCTAssert(uut.subtotal == uut.total && uut.total == expectedSubtotal, "Expected cart subtotal to equal cart total as no matching discounts have been applied")
         
