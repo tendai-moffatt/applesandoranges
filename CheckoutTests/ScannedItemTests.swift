@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Checkout
 
 class ScannedItemTests: XCTestCase {
     
