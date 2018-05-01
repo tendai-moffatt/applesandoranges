@@ -12,7 +12,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let input = ["apple", "orange", "apple", "orange"]
+        let items = input.flatMap({ ScannedItem(rawValue: $0) })
+        let appleOffer = DiscountOffer(qualifyingItemType: .apple, minimumItemCount: 2, priceMultiplier: 0.5)
+        let cart = ShoppingCart(items: items, discounts: [appleOffer])
+        print(cart.total)
     }
 
     override func didReceiveMemoryWarning() {
