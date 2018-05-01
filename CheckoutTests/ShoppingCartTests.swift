@@ -22,4 +22,18 @@ class ShoppingCartTests: XCTestCase {
         XCTAssert(uut.items.count == items.count, "Expected to init ShoppingCart with \(items.count) items")
     }
     
+    func testCartSubtotal() {
+        let testCases: [(items: [ScannedItem], expectedPrice: Double)] = [
+            (items: [.apple], expectedPrice: 0.6),
+            (items: [.orange], expectedPrice: 0.25),
+            (items: [.apple, .orange], expectedPrice: 0.85),
+            (items: [.apple, .orange, .apple, .orange], expectedPrice: 1.7)
+        ]
+        
+        for testCase in testCases {
+            let uut = ShoppingCart(items: testCase.items)
+            XCTAssert(uut.subtotal == testCase.expectedPrice, "Expected subtotal: \(testCase.expectedPrice), found: \(uut.subtotal)")
+        }
+    }
+    
 }
