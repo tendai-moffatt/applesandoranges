@@ -17,6 +17,7 @@
 		58BCA2A82098452E00BB2461 /* ScannedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA2A72098452E00BB2461 /* ScannedItem.swift */; };
 		58BCA2AA209848BA00BB2461 /* ShoppingCartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA2A9209848BA00BB2461 /* ShoppingCartTests.swift */; };
 		58BCA2AC20984A5A00BB2461 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA2AB20984A5A00BB2461 /* ShoppingCart.swift */; };
+		58BCA2B02098500C00BB2461 /* DiscountOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA2AF2098500C00BB2461 /* DiscountOffer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		58BCA2A72098452E00BB2461 /* ScannedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedItem.swift; sourceTree = "<group>"; };
 		58BCA2A9209848BA00BB2461 /* ShoppingCartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTests.swift; sourceTree = "<group>"; };
 		58BCA2AB20984A5A00BB2461 /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
+		58BCA2AF2098500C00BB2461 /* DiscountOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountOffer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				58BCA2A72098452E00BB2461 /* ScannedItem.swift */,
 				58BCA2AB20984A5A00BB2461 /* ShoppingCart.swift */,
+				58BCA2AF2098500C00BB2461 /* DiscountOffer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				58BCA2792098420700BB2461 /* ViewController.swift in Sources */,
 				58BCA2A82098452E00BB2461 /* ScannedItem.swift in Sources */,
 				58BCA2772098420700BB2461 /* AppDelegate.swift in Sources */,
+				58BCA2B02098500C00BB2461 /* DiscountOffer.swift in Sources */,
 				58BCA2AC20984A5A00BB2461 /* ShoppingCart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
