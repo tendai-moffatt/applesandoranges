@@ -17,5 +17,5 @@ struct DiscountOffer {
     
     // The discount's effect on the price
     // (e.g. 50% off = 0.5; 3 for 2 = 0.33)
-    let priceMultiplier: Double
+    let priceMultiplier: Decimal
 }

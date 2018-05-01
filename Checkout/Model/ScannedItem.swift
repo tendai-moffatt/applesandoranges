@@ -12,7 +12,7 @@ enum ScannedItem: String {
     case apple
     case orange
     
-    var price: Double {
+    var price: Decimal {
         switch self {
         case .apple:
             return 0.6

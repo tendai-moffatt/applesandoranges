@@ -12,18 +12,20 @@ class ShoppingCart: NSObject {
     
     var items: [ScannedItem]
     var discounts: [DiscountOffer]
-    var subtotal: Double {
+    var subtotal: Decimal {
         return items.reduce(0, { return $0 + $1.price })
     }
-    var total: Double {
+    var total: Decimal {
         var cartTotal = subtotal
         for discount in discounts {
             let qualifyingItems = items.filter({ $0 == discount.qualifyingItemType })
             let matchCount = qualifyingItems.count - (qualifyingItems.count % discount.minimumItemCount)
-            let discount = Double(matchCount) * discount.qualifyingItemType.price * discount.priceMultiplier
+            let discount = Decimal(matchCount) * discount.qualifyingItemType.price * discount.priceMultiplier
             cartTotal -= discount
         }
-        return cartTotal
+        var roundedTotal = Decimal()
+        NSDecimalRound(&roundedTotal, &cartTotal, 2, .plain)
+        return roundedTotal
     }
     
     override init() {

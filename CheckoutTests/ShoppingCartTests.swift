@@ -40,7 +40,7 @@ class ShoppingCartTests: XCTestCase {
     }
 
     func testCartSubtotal() {
-        let testCases: [(items: [ScannedItem], expectedPrice: Double)] = [
+        let testCases: [(items: [ScannedItem], expectedPrice: Decimal)] = [
             (items: [.apple], expectedPrice: 0.6),
             (items: [.orange], expectedPrice: 0.25),
             (items: [.apple, .orange], expectedPrice: 0.85),
@@ -55,8 +55,8 @@ class ShoppingCartTests: XCTestCase {
     
     func testCartWithDiscountOffer() {
         let items: [ScannedItem] = [.apple, .orange, .apple, .orange]
-        let expectedSubtotal = 1.7
-        let expectedTotal = 1.1
+        let expectedSubtotal: Decimal = 1.7
+        let expectedTotal: Decimal = 1.1
         let offer = DiscountOffer(qualifyingItemType: .apple, minimumItemCount: 2, priceMultiplier: 0.5)
         let uut = ShoppingCart(items: items)
         XCTAssert(uut.subtotal == uut.total && uut.total == expectedSubtotal, "Expected cart subtotal to equal cart total before discounts have been applied")
@@ -67,8 +67,8 @@ class ShoppingCartTests: XCTestCase {
     
     func testCartWithMultipleDiscounts() {
         let items: [ScannedItem] = [.apple, .orange, .apple, .orange, .orange]
-        let expectedSubtotal = 1.95
-        let expectedTotal = 1.1
+        let expectedSubtotal: Decimal = 1.95
+        let expectedTotal: Decimal = 1.1
         let offer1 = DiscountOffer(qualifyingItemType: .apple, minimumItemCount: 2, priceMultiplier: 0.5)
         let offer2 = DiscountOffer(qualifyingItemType: .orange, minimumItemCount: 3, priceMultiplier: 1/3)
         let uut = ShoppingCart(items: items)
@@ -81,7 +81,7 @@ class ShoppingCartTests: XCTestCase {
     
     func testCartWithDiscountWithoutQualifiyingItems() {
         let items: [ScannedItem] = [.orange, .orange]
-        let expectedSubtotal = 0.5
+        let expectedSubtotal: Decimal = 0.50
 
         let offer1 = DiscountOffer(qualifyingItemType: .apple, minimumItemCount: 2, priceMultiplier: 0.5)
         let uut = ShoppingCart(items: items)
