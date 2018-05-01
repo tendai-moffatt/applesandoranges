@@ -11,6 +11,9 @@ import Foundation
 class ShoppingCart: NSObject {
     
     var items: [ScannedItem]
+    var subtotal: Double {
+        return items.reduce(0, { return $0 + $1.price })
+    }
     
     override init() {
         self.items = [ScannedItem]()
