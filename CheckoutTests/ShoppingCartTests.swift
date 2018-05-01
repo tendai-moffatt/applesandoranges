@@ -36,4 +36,46 @@ class ShoppingCartTests: XCTestCase {
         }
     }
     
+    func testCartWithDiscountOffer() {
+        let items: [ScannedItem] = [.apple, .orange, .apple, .orange]
+        let expectedSubtotal = 1.7
+        let expectedTotal = 1.1
+        let offer = DiscountOffer(qualifyingItemType: .apple, minimumItemCount: 2, priceMultiplier: 0.5)
+        let uut = ShoppingCart(items: items)
+        XCTAssert(uut.subtotal == uut.total == expectedSubtotal, "Expected cart subtotal to equal cart total before discounts have been applied")
+        
+        uut.apply(offer: offer)
+        XCTAssert(uut.subtotal == expectedSubtotal && uut.total == expectedTotal, "Expected cart total to change now discounts have been applied")
+    }
+    
+    func testCartWithMultipleDiscounts() {
+        let items: [ScannedItem] = [.apple, .orange, .apple, .orange, .orange]
+        let expectedSubtotal = 1.95
+        let expectedTotal = 1.1
+        let offer1 = DiscountOffer(qualifyingItemType: .apple, minimumItemCount: 2, priceMultiplier: 0.5)
+        let offer2 = DiscountOffer(qualifyingItemType: .orange, minimumItemCount: 3, priceMultiplier: 2/3)
+        let uut = ShoppingCart(items: items)
+        XCTAssert(uut.subtotal == uut.total == expectedSubtotal, "Expected cart subtotal to equal cart total before discounts have been applied")
+        
+        uut.apply(offer: offer1)
+        uut.apply(offer: offer2)
+        XCTAssert(uut.subtotal == expectedSubtotal && uut.total == expectedTotal, "Expected cart total to change now discounts have been applied")
+    }
+    
+    func testCartWithDiscountWithoutQualifiyingItems() {
+        let items: [ScannedItem] = [.orange, .orange]
+        let expectedSubtotal = 0.5
+        let expectedTotal = 0.5
+        let offer1 = DiscountOffer(qualifyingItemType: .apple, minimumItemCount: 2, priceMultiplier: 0.5)
+        let uut = ShoppingCart(items: items)
+        
+        uut.apply(offer: offer1)
+        XCTAssert(uut.subtotal == uut.total == expectedSubtotal, "Expected cart subtotal to equal cart total as no matching discounts have been applied")
+        
+        let offer2 = DiscountOffer(qualifyingItemType: .orange, minimumItemCount: 3, priceMultiplier: 2/3)
+        uut.apply(offer: offer2)
+        XCTAssert(uut.subtotal == uut.total == expectedSubtotal, "Expected cart subtotal to equal cart total as no matching discounts have been applied")
+        
+    }
+    
 }
