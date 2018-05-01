@@ -11,4 +11,13 @@ import Foundation
 enum ScannedItem: String {
     case apple
     case orange
+    
+    var price: Double {
+        switch self {
+        case .apple:
+            return 0.6
+        case .orange:
+            return 0.25
+        }
+    }
 }
